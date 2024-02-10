@@ -286,6 +286,7 @@ header p {
     color: hsl(15, 100%, 70%);
     top: -2px;
     margin-left: 5px;
+    font-size: 0.5rem;
 }
 
 .check-box {
@@ -398,6 +399,10 @@ header p {
     .input-check::after {
         width: 500px;
         bottom: -30px;
+    }
+
+    .input-check p span {
+        font-size: 0.6rem;
     }
 
     .input-check p span::after {
