@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+
+        <title>Frontend Mentor | Interactive pricing component</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <header>
+                    <h1>Simple, traffic-based pricing</h1>
+                    <p>Sign-up for our 30-day trial. No credit card required.</p>
+                </header>
+
+                <div class="card">
+                    <div class="price">
+                        <p class="page">100k Pageviews</p>
+                        <div class="input-slider">
+                            <input type="range" id="slider" name="slider" min="0" max="32" value="0" />
+                        </div>
+                        <label for="slider" class="price_month"><span>$</span><span id="price">0</span><span>.00</span>/month</label>
+                        <div class="input-check">
+                            <p>Monthly Billing</p>
+                            <input type="checkbox" id="toggle" hidden />
+                            <label for="toggle" class="check-box">
+                                <div class="circle"></div>
+                            </label>
+                            <p>Yearly Billing<span>-25%</span></p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="desc">
+                            <p><span>✔</span>Unlimited websites</p>
+                            <p><span>✔</span>100% data ownership</p>
+                            <p><span>✔</span>Email reports</p>
+                        </div>
+                        <div class="box"><button type="submit" name="submit" id="submit">Start my trial</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/app.js"></script>
+    </body>
+</html>
