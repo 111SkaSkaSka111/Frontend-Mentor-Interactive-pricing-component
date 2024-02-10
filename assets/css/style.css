@@ -88,9 +88,14 @@ header p {
 }
 
 .page {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-transform: uppercase;
+
+    & .total {
+        margin-right: 5px;
+    }
 }
 
 .price_month {

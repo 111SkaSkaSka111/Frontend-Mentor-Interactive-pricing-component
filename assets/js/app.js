@@ -2,6 +2,50 @@ const slider = document.getElementById("slider");
 const price = document.getElementById("price");
 const toggle = document.getElementById("toggle");
 
+function getPriceByPageViews(value) {
+    switch (value) {
+        case "1":
+            return "10K";
+        case "2":
+            return "50K";
+        case "3":
+            return "100K";
+        case "4":
+            return "500K";
+        case "5":
+            return "1M";
+        default:
+            return "";
+    }
+}
+
+function updatePrice() {
+    let sliderValue = parseInt(slider.value);
+    let priceValue;
+
+    switch (sliderValue) {
+        case 1:
+            priceValue = 8;
+            break;
+        case 2:
+            priceValue = 12;
+            break;
+        case 3:
+            priceValue = 16;
+            break;
+        case 4:
+            priceValue = 24;
+            break;
+        case 5:
+            priceValue = 36;
+            break;
+        default:
+            priceValue = 8;
+    }
+
+    return priceValue;
+}
+
 let isDragging = false;
 
 slider.addEventListener("mousedown", function () {
@@ -20,9 +64,13 @@ slider.addEventListener("click", function () {
 
 function handleDrag() {
     if (isDragging) {
-        const discount = Math.round(slider.value * 0.25);
-        const newValue = toggle.checked ? slider.value - discount : slider.value;
+        const discount = toggle.checked ? Math.round(updatePrice() * 0.25) : 0;
+        const newValue = updatePrice() - discount;
         price.innerHTML = newValue;
+
+        const pageView = document.querySelector(".total");
+        const pageViewText = getPriceByPageViews(slider.value);
+        pageView.innerHTML = pageViewText;
     }
 }
 
