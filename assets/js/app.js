@@ -93,15 +93,12 @@ slider.addEventListener("click", function () {
 });
 
 function handleDrag() {
-    if (isDragging) {
-        const discount = toggle.checked ? Math.round(updatePrice() * 0.25) : 0;
-        const newValue = updatePrice() - discount;
-        price.innerHTML = newValue;
-
-        const pageView = document.querySelector(".total");
-        const pageViewText = getPriceByPageViews(slider.value);
-        pageView.innerHTML = pageViewText;
-    }
+    const discount = toggle.checked ? Math.round(updatePrice() * 0.25) : 0;
+    const newValue = updatePrice() - discount;
+    const pageView = document.querySelector(".total");
+    const pageViewText = getPriceByPageViews(slider.value);
+    pageView.innerHTML = pageViewText;
+    price.innerHTML = newValue;
 }
 
 stopDrag = () => {
@@ -109,7 +106,14 @@ stopDrag = () => {
     document.removeEventListener("mouseup", stopDrag);
 };
 
-slider.oninput = () => {
-    const value = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-    slider.style.background = `linear-gradient(to right, aqua 0%, aqua ${value}%, #ccc ${value}%, #ccc 100%)`;
-};
+window.addEventListener("load", () => {
+    const updateSliderBackground = () => {
+        const value = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+        slider.style.background = `linear-gradient(to right, aqua 0%, aqua ${value}%, #ccc ${value}%, #ccc 100%)`;
+    };
+
+    updateSliderBackground();
+    handleDrag();
+
+    slider.addEventListener("input", updateSliderBackground);
+});
