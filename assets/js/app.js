@@ -1,3 +1,36 @@
+// ======================DarkMode=================== \\
+let darkMode = localStorage.getItem("darkMode");
+const toggleDarkMode = document.getElementById("toggle-dark-mode");
+console.log(darkMode);
+
+const enableDarkMode = () => {
+    document.body.classList.add("darkmode");
+    localStorage.setItem("darkMode", "enabled");
+    toggleDarkMode.classList.add("active");
+};
+
+const disableDarkMode = () => {
+    document.body.classList.remove("darkmode");
+    localStorage.setItem("darkMode", null);
+    toggleDarkMode.classList.remove("active");
+};
+
+if (darkMode === "enabled") {
+    enableDarkMode();
+}
+
+toggleDarkMode.addEventListener("click", () => {
+    darkMode = localStorage.getItem("darkMode");
+    if (darkMode !== "enabled") {
+        enableDarkMode();
+        console.log(darkMode);
+    } else {
+        disableDarkMode();
+        console.log(darkMode);
+    }
+});
+
+// ======================utility==================== \\
 const slider = document.getElementById("slider");
 const price = document.getElementById("price");
 const toggle = document.getElementById("toggle");

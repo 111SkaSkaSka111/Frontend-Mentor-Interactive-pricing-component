@@ -1,11 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap");
 
+:root {
+    --bg-clr-primary: #ffffff;
+    --bg-clr-secondary: #eaeefa;
+    --txt-clr-primary: #000;
+    --txt-clr-secondary: #858fad;
+    --box-sd-light: 5px 20px 20px #00000030;
+    --box-sd-strong: 5px 5px 10px #00000070;
+}
+
+.darkmode {
+    --bg-clr-primary: #000000;
+    --bg-clr-secondary: #404a68;
+    --txt-clr-primary: #fffdfd;
+    --txt-clr-secondary: #adc2ff;
+    --box-sd-light: 5px 5px 20px 15px #ffffff30;
+    --box-sd-strong: 5px 5px 10px #ffffff70;
+}
+
 * {
     font-family: "Manrope", sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    color: #858fad;
+    color: var(--txt-clr-secondary);
+}
+
+body {
+    background-color: var(--bg-clr-primary);
 }
 
 .container {
@@ -20,7 +42,7 @@
     content: "";
     width: 100%;
     height: 55vh;
-    background-color: #eaeefa;
+    background-color: var(--bg-clr-secondary);
     top: 0;
     z-index: -2;
     border-radius: 0 0 0 90px;
@@ -59,7 +81,7 @@ header::before {
 header h1 {
     font-size: 1.2rem;
     padding: 5px;
-    color: #000;
+    color: var(--txt-clr-primary);
 }
 
 header p {
@@ -73,10 +95,37 @@ header p {
     display: grid;
     place-items: center;
     gap: 10px;
-    overflow: hidden;
-    background-color: #fff;
+    /* overflow: hidden; */
+    background-color: var(--bg-clr-primary);
     border-radius: 10px;
-    box-shadow: 5px 20px 20px #00000020;
+    box-shadow: var(--box-sd-light);
+    position: relative;
+}
+
+#toggle-dark-mode {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+#toggle-dark-mode img {
+    transition: all 0.3s ease;
+}
+
+#toggle-dark-mode .moon {
+    padding: 0 0 5px 2px;
+    width: 30px;
+    height: 30px;
+}
+
+#toggle-dark-mode.active img {
+    transform: translateY(-110%);
 }
 
 .price {
@@ -107,7 +156,7 @@ header p {
 
 .price .price_month span {
     font-size: 2rem;
-    color: #000;
+    color: var(--txt-clr-primary);
 }
 
 .footer {
@@ -142,7 +191,7 @@ header p {
     width: 180px;
     height: 40px;
     border-radius: 4rem;
-    box-shadow: 5px 5px 10px #00000070;
+    box-shadow: var(--box-sd-strong);
     margin-top: 20px;
     transition: all 0.3s ease-in-out;
 }
@@ -247,12 +296,6 @@ header p {
     transform: translateY(-10px);
     scale: 1.25;
 }
-
-#slider::-moz-range-progress {
-    background: aqua;
-    color: aquamarine;
-}
-
 /* =================Toggle================== */
 
 .input-check {
@@ -269,7 +312,7 @@ header p {
     content: "";
     width: 300px;
     height: 1px;
-    background-color: #e2eaff;
+    background-color: var(--txt-clr-secondary);
     bottom: -15px;
 }
 
@@ -278,7 +321,6 @@ header p {
 }
 
 .input-check p span {
-    border: 1px solid #eeeeee;
     padding: 2px 3px;
     position: absolute;
     border-radius: 20px;
@@ -297,8 +339,8 @@ header p {
     border-radius: 999px;
     cursor: pointer;
     transition: all 0.5s;
-    background-color: #aaaaaa5b;
-    box-shadow: inset -2px 2px 10px black;
+    background-color: var(--bg-clr-secondary);
+    box-shadow: inset -2px 2px 10px var(--txt-clr-primary);
 }
 
 .circle {
@@ -332,6 +374,7 @@ header p {
 
     .content {
         margin: 0;
+        max-width: 500px;
     }
 
     header {
